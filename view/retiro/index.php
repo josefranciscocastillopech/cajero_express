@@ -33,12 +33,11 @@ if(!isset($_SESSION['id_tarjeta'])){
         </header>
         <main >
             <h1 class="fw-bold text-center p-4" >Retirar Dinero</h1>
-            
-            <form class="container vstack gap-2 col-md-5 mx-auto">
+            <form class="container vstack gap-2 col-md-5 mx-auto" action="./update.php" method="post" >
                 <label class="form-label">Ingrese el monto a retirar</label>
                 <label class="form-label">Monto minimo debe de ser de $100</label>
-                <input type="number" class="form-control mb-4">
-                <a class="btn btn-primary" href="../bienvenida/index.php" style="background-color:limegreen; border:5px solid blue;" >Retirar dinero</a>
+                <input type="number" class="form-control mb-4" name="monto"> 
+                <button type="submit" class="btn btn-primary" style="background-color:limegreen; border:5px solid blue;">Retirar</button>
             </form>
         </main>
         <footer>

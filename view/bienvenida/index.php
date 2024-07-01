@@ -42,18 +42,7 @@ $nombre_completo = $nombre . " " . $ap_paterno;
                     <div class="container vstack gap-2 col-md-5 mx-auto">
                         <a class="btn btn-primary m-3" href="../saldo/index.php" id="n_tarjeta" name="n_tarjeta"  style="background-color: #1df083; border:5px solid red">Consultar saldo</a>
                         <a class="btn btn-secondary m-3" href="../retiro/index.php" style="background-color:limegreen; border:5px solid blue">Retirar dinero</a>
-                        <a class="btn btn-secondary m-3" 
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        style="background-color: red; border:5px solid #000000;">Cancelar</a>
+                        <a class="btn btn-secondary m-3" href="../../connection/logout.php"style="background-color: red; border:5px solid #000000;">Cancelar</a>
                     </div>
                 </div>
             </div>

@@ -221,7 +221,7 @@ BEGIN
     DECLARE retiro_id INT;
 
     -- Consulta el id_tipo_movimiento
-    SELECT id_tipo_movimiento INTO retiro_id
+    SELECT id_tipo_movimientos INTO retiro_id
     FROM tb_tipo_movimientos
     WHERE tipo = 'retiro';
 
@@ -229,10 +229,10 @@ BEGIN
     SET v_monto = NEW.saldo - OLD.saldo;
 
     IF v_monto < 0 THEN
-    -- cuando se resta el saldo acutal con el viejo, el valor es negativo (invertirmos los signos)
+    -- cuando se resta el saldo actual con el viejo, el valor es negativo (invertirmos los signos)
         SET v_monto = -v_monto;
             IF v_saldo >= v_monto THEN
-                INSERT INTO tb_movimientos (monto,id_tarjeta,id_tipo_movimiento)
+                INSERT INTO tb_movimientos (monto,id_tarjeta,id_tipo_movimientos)
                 VALUE (v_monto,OLD.id_tarjeta,retiro_id);
 
                 -- Actualizar el saldo tb_tarjetas
@@ -245,4 +245,25 @@ BEGIN
             END IF;
     END IF;
 END;
-DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER tg_conulta
+BEFORE UPDATE ON tb_tarjetas
+FOR EACH ROW
+BEGIN
+
+    DECLARE v_saldo DECIMAL(20,2);
+    DECLARE consulta_id INT;
+
+    -- Consulta el id_tipo_movimiento
+    SELECT id_tipo_movimientos INTO consulta_id
+    FROM tb_tipo_movimientos
+    WHERE tipo = 'consulta';
+
+    SET v_saldo = OLD.saldo;
+    INSERT INTO tb_movimientos (monto,id_tarjeta,id_tipo_movimientos)
+    VALUE (v_saldo,OLD.id_tarjeta,consulta_id);
+    -- Actualizar el saldo tb_tarjetas
+    SET NEW.saldo = OLD.saldo;
+END;

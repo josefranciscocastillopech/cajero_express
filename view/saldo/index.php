@@ -37,9 +37,9 @@ $saldo = $_SESSION['saldo'];
                     <div class="col-6" style="background-color:aqua;">
                         <h1 class="fw-bold text-center P-4">Consulta su saldo</h1>
                         <div class="container vstack gap-2 col-md-5 mx-auto">
-                            <h2 class="text-center P-4">Su saldo actual es de:</h2>
+                            <h2 class="text-center P-4">Su saldo actual es de: </h2>
                             <h3 class="text-center P-4"><?= $saldo; ?></h3>
-                            <a class="btn btn-primary mb-3" href="../bienvenida/index.php" style="background-color:lawngreen; border:5px solid blue;">Confirmar</a>
+                            <a class="btn btn-primary mb-3" href="../bienvenida/index.php" style="background-color:lawngreen; border:5px solid blue;" >Confirmar</a>
                         </div>
                     </div>
                 </div>
