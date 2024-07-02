@@ -265,5 +265,5 @@ BEGIN
     INSERT INTO tb_movimientos (monto,id_tarjeta,id_tipo_movimientos)
     VALUE (v_saldo,OLD.id_tarjeta,consulta_id);
     -- Actualizar el saldo tb_tarjetas
-    SET NEW.saldo = OLD.saldo;
+    SET NEW.saldo = NEW.saldo;
 END;
